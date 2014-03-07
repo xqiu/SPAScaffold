@@ -1,0 +1,39 @@
+﻿body {
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    min-width: 1300px;
+    width: 100%;
+}
+
+#mainDiv {
+    min-width: 1300px;
+    width: 100%;
+    min-height: 800px;
+    height: 100%;
+}
+
+.CodeMirror {
+    /*float: left;*/
+    width: 100%;
+    border: 1px solid black;
+}
+
+iframe {
+    /*float: left;*/
+    min-width: 300px;
+    width: 100%;
+    min-height: 200px;
+    height: 80%;
+    border: 1px solid black;
+}
+
+#htmlPane {
+    padding-left: 10px;
+    padding-right: 30px;
+}
+
+#jsPane {
+    padding-left: 10px;
+    padding-right: 30px;
+}

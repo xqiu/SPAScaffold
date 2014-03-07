@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "KnockoutJS Scaffold";
+}
+
+<div id="mainDiv">
+    <div id="leftPane">
+        <div id="jsonPane">
+            <div>
+                <p>
+                    JSON URL
+                    <input type="text" style="width: 70%" data-bind="value: jsonUrl" />
+                    <a data-bind="click: jsonUrlButtonClick" title="Get JSON" class="btn btn-info">Get JSON</a>
+                </p>
+            </div>
+            <div>
+                Or choose a sample JSON or URL:
+                <select class="form-control" data-bind="options: sampleUrls, selectedOptions: chosenSampleUrls"></select>
+            </div>
+            <div>
+                <textarea style="width: 90%" data-bind="value: jsonText" rows="10"></textarea>
+            </div>
+            <div>
+                <input type="checkbox" data-bind="checked: useTable" />Use &lt;table&gt; instead of &lt;ul&gt; &nbsp;&nbsp;&nbsp;
+                <input type="checkbox" data-bind="checked: useCRUD" />CRUD on objects arrays in &lt;table&gt;
+                <input type="checkbox" data-bind="checked: useData" />Simple webapi data layer
+            </div>
+            <div>
+                <a data-bind="click: scaffoldGetClick" title="Scaffold" class="btn btn-info">Scaffold Get</a>
+            </div>
+
+            <div class="alert alert-warning" data-bind="text: errorMessage"></div>
+
+            @*<div>
+                <h3>Json Classes</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>name</td>
+                            <td>isArray</td>
+                            <td>isObject</td>
+                            <td>elements.length</td>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: jsonClasses">
+                        <tr>
+                            <td><span data-bind="text: name"></span></td>
+                            <td><span data-bind="text: isArray"></span></td>
+                            <td><span data-bind="text: isObject"></span></td>
+                            <td><span data-bind="text: elements.length"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>*@
+        </div>
+        <div id="previewPane">
+            <h3>Preview</h3>
+            <iframe data-bind="navigateIframeTo: pageDisplayViewModel.runnablePageUrl"></iframe>
+        </div>
+    </div>
+    <div id="rightPane">
+        <div id="htmlPane">
+            <h3>View (HTML)</h3>
+            <textarea id="generatedHtml" data-bind="html: scaffoldHtml"></textarea>
+        </div>
+        <div id="jsPane">
+            <h3>View Model(JavaScript)</h3>
+            <textarea id="generatedJs" data-bind="html: scaffoldJS"></textarea>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/codemirror")
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/knockoutScaffold")
+
+}
+
+@section css {
+    @Styles.Render("~/Content/codemirrorcss")
+}

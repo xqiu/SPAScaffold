@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "AngularJS Scaffold";
+    ViewBag.HtmlAttr = "ng-app";
+    ViewBag.HtmlAttrValue = "angularScaffoldApp";
+}
+
+<div id="mainDiv" ng-controller="MainCtrl">
+    <div id="leftPane">
+        <div id="jsonPane">
+            <div>
+                <p>
+                    JSON URL
+                    <input type="text" style="width: 70%" ng-model="jsonUrl" />
+                    <a ng-click="jsonUrlButtonClick()" title="Get JSON" class="btn btn-info">Get JSON</a>
+                </p>
+            </div>
+            <div>
+                Or choose a sample JSON or URL:
+                <select class="form-control" ng-change="chosenSampleUrlOnChange()" ng-model="chosenSampleUrl"
+                        ng-options="v for v in sampleUrls"></select>
+            </div>
+            <div>
+                <textarea style="width: 90%" ng-model="jsonText" ng-blur="jsonTextOnBlur()" rows="10"></textarea>
+            </div>
+            <div>
+                <input type="checkbox" ng-model="useTable" ng-click="useTableOnCheck()" />Use &lt;table&gt; instead of &lt;ul&gt; &nbsp;&nbsp;&nbsp;
+                <input type="checkbox" ng-model="useCRUD" ng-click="useCRUDOnCheck()" />CRUD on objects arrays in &lt;table&gt;
+                <input type="checkbox" ng-model="useData" ng-click="useDataOnCheck()" />Simple webapi data layer
+            </div>
+            <div>
+                <a ng-click="scaffoldGetClick()" title="Scaffold" class="btn btn-info">Scaffold Get</a>
+            </div>
+
+            <div class="alert alert-warning">{{errorMessage}}</div>
+
+            @*<div>
+                <h3>Json Classes</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>name</td>
+                            <td>isArray</td>
+                            <td>isObject</td>
+                            <td>elements.length</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="jsonClass in jsonClasses">
+                            <td><span>{{jsonClass.name}}</span></td>
+                            <td><span>{{jsonClass.isArray}}</span></td>
+                            <td><span>{{jsonClass.isObject}}</span></td>
+                            <td><span>{{jsonClass.elements.length}}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>*@
+        </div>
+        <div id="previewPane">
+            <h3>Preview</h3>
+            <iframe src="{{runnablePageUrl}}"></iframe>
+        </div>
+    </div>
+    <div id="rightPane">
+        <div id="htmlPane">
+            <h3>View (HTML)</h3>
+            <textarea id="generatedHtml" ng-model="scaffoldHtml"></textarea>
+        </div>
+        <div id="jsPane">
+            <h3>View Model(JavaScript)</h3>
+            <textarea id="generatedJs" ng-model="scaffoldJS"></textarea>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/codemirror")
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    @Scripts.Render("~/bundles/AngularScaffold")
+}
+
+@section css {
+    @Styles.Render("~/Content/codemirrorcss")
+}

@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "BackboneJS/UnderscoreJS Scaffold";
+}
+
+<div id="mainDiv">
+    <div id="leftPane">
+        <div id="jsonPane">
+            <div>
+                <p>
+                    JSON URL
+                    <input type="text" style="width: 70%" id="jsonUrl" />
+                    <a id="jsonUrlButtonClick" title="Get JSON" class="btn btn-info">Get JSON</a>
+                </p>
+            </div>
+            <div>
+                Or choose a sample JSON or URL:
+                <div id="sampleUrls-container"></div>
+
+                <script type="text/template" id="sampleUrls_select_template">
+                    <select class="form-control" id="sampleUrls-selector">
+                        <% _(sampleUrls).each(function(url) { %>
+                        <option value="<%= url.name %>"><%= url.name %></option>
+                        <% }); %>
+                    </select>
+                </script>
+
+            </div>
+            <div>
+                <textarea style="width: 90%" id="jsonText" rows="10"></textarea>
+            </div>
+            <div>
+                <input type="checkbox" id="useTable" />Use &lt;table&gt; instead of &lt;ul&gt; &nbsp;&nbsp;&nbsp;
+                <input type="checkbox" id="useCRUD" />CRUD on objects arrays in &lt;table&gt;
+                <input type="checkbox" id="useData" />Simple webapi data layer
+            </div>
+            <div>
+                <a id="scaffoldGetClick" title="Scaffold" class="btn btn-info">Scaffold Get</a>
+            </div>
+
+            <div class="alert alert-warning" id="errorMessage"></div>
+
+        </div>
+        <div id="previewPane">
+            <h3>Preview</h3>
+            <iframe id="runnablePageUrl" src=""></iframe>
+        </div>
+    </div>
+    <div id="rightPane">
+        <div id="htmlPane">
+            <h3>View (HTML)</h3>
+            <textarea id="generatedHtml"></textarea>
+        </div>
+        <div id="jsPane">
+            <h3>View Model(JavaScript)</h3>
+            <textarea id="generatedJs"></textarea>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/codemirror")
+    @Scripts.Render("~/bundles/BackboneUnderscoreScaffold")
+}
+
+@section css {
+    @Styles.Render("~/Content/codemirrorcss")
+}
