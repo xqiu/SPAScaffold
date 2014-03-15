@@ -240,6 +240,18 @@
                     { "id": "About", "label": "About Adobe CVG Viewer..." }
                 ]
             }
+        },
+
+        JsonSpecialCharacters: {
+            "path" : "\\\\testdrive\\temp",
+            "project": [
+                {
+                    "path": "c:\\abc\\abc.proj",
+                    "quote": "\"withQuotes\"",
+                    "tab": "\t\t2tabs",
+                    "withLineFeedAndCR": "line1\r\nline2\r\n",
+                }
+            ]
         }
 
     },
