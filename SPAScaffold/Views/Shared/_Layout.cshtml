@@ -10,9 +10,13 @@ else
     @: <html>
 }
     <head>
+        <title>@ViewBag.Title</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewBag.Title</title>
+        <meta name="description" content="Scaffold JSON data or RESTful API returns to HTML and JavaScript using Angularjs, Knockoutjs and Backbonejs">
+        <meta name="ROBOTS" content="INDEX, FOLLOW">
+        <meta name="keywords" content="HTML,JavaScript,Scaffold,Angular,Knockout,Backbone">
+        <meta name="author" content="Xinyang Qiu">
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
         @RenderSection("css", required: false)
