@@ -94,8 +94,8 @@
             hasNoName = true;
         }
         else {
-            if (key.indexOf(':') >= 0 || key.indexOf('-') >= 0) {
-                key = key.replace(/[:-]/g, '_');
+            if (key.indexOf(':') >= 0 || key.indexOf('-') >= 0 || key.indexOf('.') >= 0) {
+                key = key.replace(/[.:-]/g, '_');
             }
         }
 

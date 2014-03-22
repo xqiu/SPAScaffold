@@ -681,7 +681,7 @@ function AppViewModel(dataModel) {
                 }
             }
             else {
-                self.htm += indent + currentIndent + "<div><span class='col-lg-5'>" + element.name + ":</span>" + "<span class='col-lg-5' data-bind='text: " + element.name + "'></span></div>\n";
+                self.htm += indent + currentIndent + "<div><span class='col-lg-5'>" + element.oriName + ":</span>" + "<span class='col-lg-5' data-bind='text: " + element.name + "'></span></div>\n";
             }
 
         }

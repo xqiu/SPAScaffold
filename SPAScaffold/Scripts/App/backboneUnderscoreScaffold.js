@@ -352,7 +352,7 @@ $(function () {
                         jstext += ") });\n";
 
                         if (item.name == "rootObject") {
-                            jstext += indent + "    this.$el.html(view.render().el);\n";
+                            jstext += indent + "    this.$('." + item.name + "_body').append(view.render().el);\n";
                         } else {
                             if (item.parent != null & item.parent.isArray) {
                                 jstext += indent + "    this.$('." + item.name + "_" + element.name + "_body').append(view.render().el);\n";
@@ -670,7 +670,7 @@ $(function () {
                         if (this.useTable) {
                             template += indent + currentIndent + "<td>\n";
                         }
-                        template += indent + currentIndent + "<div><span class='col-lg-5'>" + element.name + ":</span></div>\n";
+                        template += indent + currentIndent + "<div><span class='col-lg-5'>" + element.oriName + ":</span></div>\n";
                         template += indent + currentIndent + "<ul>\n";
                         template += indent + currentIndent + "<% _(" + element.name + ").each(function(value) { %>\n";
                         template += indent + currentIndent + "    <li> <%= value %></li>\n";
@@ -714,7 +714,7 @@ $(function () {
                         }
                     }
                 } else {
-                    template += indent + currentIndent + "<div><span class='col-lg-5'>" + element.name + ":</span><span class='col-lg-5'><%=" + this.getElementNameForTemplateEval(element) + "%></span></div>\n";
+                    template += indent + currentIndent + "<div><span class='col-lg-5'>" + element.oriName + ":</span><span class='col-lg-5'><%=" + this.getElementNameForTemplateEval(element) + "%></span></div>\n";
                 }
             }
 

@@ -691,7 +691,7 @@ function MainCtrl($scope) {
                 }
             }
             else {
-                self.htm += indent + currentIndent + "<div><span class='col-lg-5'>" + element.name + ":</span>"
+                self.htm += indent + currentIndent + "<div><span class='col-lg-5'>" + element.oriName + ":</span>"
                     + "<span class='col-lg-5'>{{" + element.relativeName() + "}}</span></div>\n";
             }
 

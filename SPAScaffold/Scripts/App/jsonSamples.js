@@ -251,7 +251,15 @@
                     "tab": "\t\t2tabs",
                     "withLineFeedAndCR": "line1\r\nline2\r\n",
                 }
-            ]
+            ],
+            "ReferenceReplaceStatInfo": {
+                "System": 13,
+                "System.Core": 13,
+            },
+            "ReferenceReplaceStatError": {},
+            "FileExtensionStatWarning": {
+                ".asax": 2
+            },
         }
 
     },
