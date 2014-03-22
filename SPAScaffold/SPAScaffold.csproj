@@ -156,6 +156,7 @@
     <Compile Include="Controllers\DoubleListController.cs" />
     <Compile Include="Controllers\RunnablePageController.cs" />
     <Compile Include="Controllers\ListController.cs" />
+    <Compile Include="Controllers\JsonValue1Controller.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

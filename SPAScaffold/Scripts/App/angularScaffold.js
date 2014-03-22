@@ -322,6 +322,7 @@ function MainCtrl($scope) {
         jstext += "    self.$scope = scope;\n";
 
         if (self.isGeneratingDataLayer()) {
+            jstext += "    self.parent = parent;\n";
             jstext += "    self.dataModel = dataModel;\n";
         }
 
@@ -363,12 +364,18 @@ function MainCtrl($scope) {
 
                 if (self.isGeneratingDataLayer() && item.name === "rootObject") {
                     dataInitText += "    self." + element.name + " = ";
+                    if (element.isObject) {
+                        dataInitText += "new " + element.getClassName() + "(self.$scope, ";
+                    }
                     if (element.hasSpecialName()) {
                         self.usedSpecialKeyName = true;
                         dataInitText += 'GetJsonDataValue(data, "' + element.oriName + '")';
                     }
                     else {
                         dataInitText += "data." + element.name;
+                    }
+                    if (element.isObject) {
+                        dataInitText += ', self, self.dataModel)';
                     }
                     dataInitText += ";\n";
                     jstext += "null";

@@ -236,7 +236,6 @@ $(function () {
             jstext += "var " + item.getClassName() + " = Backbone.Model.extend({\n";
             jstext += this.GetDefaultsCode(item);
 
-            var dataInitText = "";
             var addAndEditItemText = "";
             for (var j = 0; j < item.elements.length; j++) {
                 var element = item.elements[j];

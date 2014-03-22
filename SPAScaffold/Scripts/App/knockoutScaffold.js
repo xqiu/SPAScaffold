@@ -372,12 +372,20 @@ function AppViewModel(dataModel) {
 
                 if (self.isGeneratingDataLayer() && item.name === "rootObject") {
                     dataInitText += "    self." + element.name + "(";
+                    if (element.isObject) {
+                        dataInitText += "new " + element.getClassName() + "(";
+                    }
+
                     if (element.hasSpecialName()) {
                         self.usedSpecialKeyName = true;
                         dataInitText += 'GetJsonDataValue(data, "' + element.oriName + '")';
                     }
                     else {
                         dataInitText += "data." + element.name;
+                    }
+
+                    if (element.isObject) {
+                        dataInitText += ', self, self.dataModel)';
                     }
                     dataInitText += ");\n";
                 }

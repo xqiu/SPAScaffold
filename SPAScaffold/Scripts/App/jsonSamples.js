@@ -3,6 +3,8 @@
             "/api/values",
             "/api/lists",
             "/api/DoubleLists",
+            "/api/JsonValue1",
+            "/api/jsonvalue1/5",
             "https://api.stackexchange.com/2.1/questions/no-answers?page=2&pagesize=2&order=desc&sort=activity&site=stackoverflow"],
 
     jsonSamples : {
