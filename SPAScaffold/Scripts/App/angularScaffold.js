@@ -369,7 +369,7 @@ function MainCtrl($scope) {
                     }
                     if (element.hasSpecialName()) {
                         self.usedSpecialKeyName = true;
-                        dataInitText += 'GetJsonDataValue(data, "' + element.oriName + '")';
+                        dataInitText += 'GetJsonDataValue(data, ' + JSON.stringify(element.oriName) + ')';
                     }
                     else {
                         dataInitText += "data." + element.name;
@@ -386,7 +386,7 @@ function MainCtrl($scope) {
                     }
                     if (element.hasSpecialName()) {
                         self.usedSpecialKeyName = true;
-                        jstext += 'GetJsonDataValue(data, "' + element.oriName + '")';
+                        jstext += 'GetJsonDataValue(data, ' + JSON.stringify(element.oriName) + ')';
                     }
                     else {
                         jstext += "data." + element.name;

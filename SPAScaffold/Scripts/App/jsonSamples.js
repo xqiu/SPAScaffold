@@ -245,6 +245,7 @@
         },
 
         JsonSpecialCharacters: {
+            "\\test\"\\\/\b\f\r\n\t\u4e2d\u6587": "\\test\"\\\/\b\f\r\n\t\u4e2d\u6587 value 1 ",
             "path" : "\\\\testdrive\\temp",
             "project": [
                 {
@@ -252,13 +253,15 @@
                     "quote": "\"withQuotes\"",
                     "tab": "\t\t2tabs",
                     "withLineFeedAndCR": "line1\r\nline2\r\n",
+                    "\u4e2d\u6587\\test\"\\\/\b\f\r\n\t": "\\test\"\\\/\b\f\r\n\t\u4e2d\u6587 value 2",
                 }
             ],
             "ReferenceReplaceStatInfo": {
                 "System": 13,
                 "System.Core": 13,
+                "for": "for keyword",
+                "var": "var keyword",
             },
-            "ReferenceReplaceStatError": {},
             "FileExtensionStatWarning": {
                 ".asax": 2
             },

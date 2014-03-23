@@ -248,7 +248,8 @@ $(function () {
                 jstext += "        return JSON.stringify({\n";
                 for (var i = 0; i < item.elements.length; i++) {
                     if (!item.elements[i].isArray || this.isNonObjectArray(item.elements[i])) {
-                        jstext += "            " + this.getElementName(item.elements[i]) + ": this.get('" + item.elements[i].oriName + "'),\n";
+                        jstext += "            " + this.getElementName(item.elements[i])
+                            + ": this.get('" + this.getElementName(item.elements[i]) + "'),\n";
                     }
                 }
                 jstext += "        });\n";
@@ -399,7 +400,12 @@ $(function () {
                     for (i = 0; i < item.elements.length; i++) {
                         var element = item.elements[i];
                         if (!element.isObject) {
-                            jstext += indent + "            '" + element.oriName + "': this.$('." + item.name + "_" + element.name + "').val(),\n";
+                            if (element.hasSpecialName()) {
+                                jstext += indent + "            " + this.getElementName(element) + ": this.$('." + item.name + "_" + element.name + "').val(),\n";
+                            }
+                            else {
+                                jstext += indent + "            '" + element.name + "': this.$('." + item.name + "_" + element.name + "').val(),\n";
+                            }
                         }
                     }
 
@@ -745,14 +751,14 @@ $(function () {
         getElementNameForTemplateEval: function (element) {
             if (element.hasSpecialName()) {
                 this.usedSpecialKeyName = true;
-                return 'GetJsonDataValue(arguments[0], "' + element.oriName + '")';
+                return 'GetJsonDataValue(arguments[0], ' + JSON.stringify(element.oriName) + ')';
             }
             return element.name;
         },
 
         getElementName: function (element) {
             if (element.hasSpecialName()) {
-                return '"' + element.oriName + '"';
+                return JSON.stringify(element.oriName);
             }
             return element.name;
         },

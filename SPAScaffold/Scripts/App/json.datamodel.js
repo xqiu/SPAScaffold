@@ -1,4 +1,6 @@
-﻿function jsonItem(name, value, jsonElements, parent) {
+﻿var _jsonSpecialNameCount = 0;
+
+function jsonItem(name, value, jsonElements, parent) {
     /// <param name="name" type="String">json name</param>
     /// <param name="value" type="String">JSON value</param>
     /// <param name="jsonElements" type="String">global Json type Elements that we should not repeat ourselves</param>
@@ -30,7 +32,7 @@
     }(value);
 
     self.elements = [];
-    
+
     self.getClassName = function () {
         var name = self.name;
         name = name.substr(0, 1).toUpperCase() + self.name.substr(1);
@@ -57,7 +59,7 @@
         $.each(value, parseElementGet);
 
         if (!self.checkRepeatItem(self.globalJsonElements)) {
-            if (!self.isArray || self.parent===null) {
+            if (!self.isArray || self.parent === null) {
                 self.globalJsonElements.push(self);
             }
         }
@@ -79,6 +81,7 @@
     }
 
     function parseElementGet(key, value) {
+        /// <param name="key" type="String">key string</param>
         var hasNoName = false;
         var oriKey = key;
         if (!isNaN(key)) {
@@ -94,8 +97,22 @@
             hasNoName = true;
         }
         else {
-            if (key.indexOf(':') >= 0 || key.indexOf('-') >= 0 || key.indexOf('.') >= 0) {
-                key = key.replace(/[.:-]/g, '_');
+            //replace non-obvious name or invalid name to special key name
+            if (key.match(/^(?:do|if|in|for|let|new|try|var|case|else|enum|eval|false|null|this|true|void|with|break|catch|class|const|super|throw|while|yield|delete|export|import|public|return|static|switch|typeof|default|extends|finally|package|private|continue|debugger|function|arguments|interface|protected|implements|instanceof)$/) != null) {
+                key = '_keyName' + (_jsonSpecialNameCount++).toString();
+            }
+            else {
+                var newKey = "";
+                var replaced = false;
+                for (var i = 0; i < key.length; i++) {
+                    if(key.substr(i,1).match(/[a-zA-Z_$][0-9a-zA-Z_$]*/)) {
+                        newKey += key[i];
+                        replaced = true;
+                    }
+                }
+                if (replaced) {
+                    key = newKey;
+                }
             }
         }
 
@@ -107,7 +124,7 @@
             self.elements.push(child);
         }
     }
-    
+
     self.fullName = function () {
         return self.getParentName(this.name);
     }
@@ -137,8 +154,7 @@
         if (self.parent.isArray) {
             return self.parent.name + "." + name;
         }
-        if (self.parent.hasNoName && (self.parent.parent != null) && self.parent.parent.isArray)
-        {   // escape the parent's name, as noName item has to be within an array, and we'll just escape the naming for it
+        if (self.parent.hasNoName && (self.parent.parent != null) && self.parent.parent.isArray) {   // escape the parent's name, as noName item has to be within an array, and we'll just escape the naming for it
             return self.parent.parent.name + "." + name;
         }
 

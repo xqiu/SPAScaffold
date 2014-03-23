@@ -378,7 +378,7 @@ function AppViewModel(dataModel) {
 
                     if (element.hasSpecialName()) {
                         self.usedSpecialKeyName = true;
-                        dataInitText += 'GetJsonDataValue(data, "' + element.oriName + '")';
+                        dataInitText += 'GetJsonDataValue(data, ' + JSON.stringify(element.oriName) + ')';
                     }
                     else {
                         dataInitText += "data." + element.name;
@@ -395,7 +395,7 @@ function AppViewModel(dataModel) {
                     }
                     if (element.hasSpecialName()) {
                         self.usedSpecialKeyName = true;
-                        jstext += 'GetJsonDataValue(data, "' + element.oriName + '")';
+                        jstext += 'GetJsonDataValue(data, ' + JSON.stringify(element.oriName) + ')';
                     }
                     else {
                         jstext += "data." + element.name;
@@ -637,7 +637,7 @@ function AppViewModel(dataModel) {
             parentIsArray = true;
         }
         else if (jClass.isObject && jClass.parent != null && !jClass.parent.isArray) {
-            self.htm += indent + "<h3>" + jClass.name + "</h3>\n";
+            self.htm += indent + "<h3>" + jClass.oriName + "</h3>\n";
             self.htm += indent + "<div data-bind='with: " + jClass.name + "'>\n";
         }
 
