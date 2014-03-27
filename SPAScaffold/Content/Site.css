@@ -19,7 +19,7 @@
     border: 1px solid black;
 }
 
-iframe {
+.previewFrame {
     /*float: left;*/
     min-width: 300px;
     width: 100%;
@@ -36,4 +36,48 @@ iframe {
 #jsPane {
     padding-left: 10px;
     padding-right: 30px;
+}
+
+
+#share {
+    position: absolute;
+    top: 250px;
+    right: 0;
+    padding: 4px;
+    background: rgba(250,250,250,.2);
+    border: 2px dotted #ddd;
+    border-right: 0;
+    border-radius: 8px 0 0 8px;
+}
+
+    #share:hover > div {
+        opacity: 1;
+    }
+
+    #share > div {
+        height: 64px;
+        margin: 4px;
+        text-align: center;
+        opacity: .80;
+    }
+
+    #share iframe {
+        width: 50px;
+    }
+
+
+@media screen and (max-width: 640px) {
+    #share {
+        position: static;
+        display: table;
+        width: 180px;
+        margin: 0 auto 2em auto;
+        background: none;
+        border: none;
+        opacity: 1;
+    }
+
+        #share > div {
+            float: left;
+        }
 }
