@@ -27,7 +27,8 @@
                             "GlossSee": "markup"
                         }
                     }
-                }
+                },
+                "emptyArray": [],
             }
         },
 

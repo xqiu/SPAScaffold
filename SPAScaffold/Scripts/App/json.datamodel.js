@@ -56,12 +56,25 @@ function jsonItem(name, value, jsonElements, parent) {
     }
 
     if (self.isObject) {
+        var stubPushed = false;
+        if (self.isArray && value.length === 0)
+        {
+            //handle empty array by inserting a stub empty string
+            value.push("");
+            stubPushed = true;
+        }
+
         $.each(value, parseElementGet);
 
         if (!self.checkRepeatItem(self.globalJsonElements)) {
             if (!self.isArray || self.parent === null) {
                 self.globalJsonElements.push(self);
             }
+        }
+
+        if(stubPushed)
+        {
+            value.pop();
         }
     }
 
