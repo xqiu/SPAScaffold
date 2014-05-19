@@ -215,7 +215,6 @@
     <Content Include="Scripts\codemirrormode\javascript\typescript.html" />
     <Content Include="Scripts\codemirrormode\xml\index.html" />
     <Content Include="Scripts\codemirrormode\xml\xml.js" />
-    <None Include="Properties\PublishProfiles\WebApplication25449.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
